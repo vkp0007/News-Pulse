@@ -10,7 +10,7 @@ News Pulse is a full-stack news aggregation platform that automatically collects
 
 **Backend API:** https://news-pulse-5huk.onrender.com
 
-**Video Walkthrough:** https://your-video-link
+**Video Walkthrough:** https://www.loom.com/share/a0dbd3483ec84ef1be5e33feda7273f0
 
 ---
 
