@@ -1,0 +1,9 @@
+feedparser
+requests
+trafilatura
+beautifulsoup4
+python-dateutil
+python-dotenv
+scikit-learn
+nltk
+numpy
