@@ -1,6 +1,8 @@
 import re
+import nltk
 
 from nltk.corpus import stopwords
+
 
 CUSTOM_STOPWORDS = {
     "watch",
@@ -32,8 +34,15 @@ CUSTOM_STOPWORDS = {
     "aljazeera",
 }
 
-STOPWORDS = set(stopwords.words("english"))
-STOPWORDS = STOPWORDS.union(CUSTOM_STOPWORDS)
+
+# Download stopwords automatically if missing
+try:
+    STOPWORDS = set(stopwords.words("english"))
+except LookupError:
+    nltk.download("stopwords", quiet=True)
+    STOPWORDS = set(stopwords.words("english"))
+
+STOPWORDS |= CUSTOM_STOPWORDS
 
 
 def preprocess(article):
@@ -46,7 +55,7 @@ def preprocess(article):
         article.title,
         article.title,
         article.summary,
-        article.content
+        article.content,
     ])
 
     text = text.lower()
@@ -57,14 +66,10 @@ def preprocess(article):
     # Remove multiple spaces
     text = re.sub(r"\s+", " ", text)
 
-    words = []
-
-    for word in text.split():
-
-        if (
-            word not in STOPWORDS
-            and len(word) > 2
-        ):
-            words.append(word)
+    words = [
+        word
+        for word in text.split()
+        if word not in STOPWORDS and len(word) > 2
+    ]
 
     return " ".join(words)
