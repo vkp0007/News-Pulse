@@ -11,7 +11,7 @@ RSS_FEEDS = {
 
 REQUEST_TIMEOUT = 15
 
-MAX_WORKERS = 8
+MAX_WORKERS = 12
 
 USER_AGENT = (
     "NewsPulse/1.0"
